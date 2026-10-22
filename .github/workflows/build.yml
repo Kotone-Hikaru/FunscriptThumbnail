@@ -1,0 +1,54 @@
+name: build
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Build
+        run: dotnet build FunscriptThumbnail.sln -c Release
+
+      - name: Render a sample thumbnail (smoke test)
+        shell: pwsh
+        run: |
+          $exe = "src/FunscriptThumbTool/bin/Release/net48/FunscriptThumbTool.exe"
+          # Build a tiny synthetic script so the test does not depend on any external file.
+          $json = @'
+          {
+            "version": "1.0",
+            "actions": [
+              { "at": 0,     "pos": 0   },
+              { "at": 250,   "pos": 100 },
+              { "at": 500,   "pos": 0   },
+              { "at": 750,   "pos": 100 },
+              { "at": 1000,  "pos": 0   }
+            ],
+            "metadata": { "duration": 1000 }
+          }
+          '@
+          $json | Set-Content -Encoding utf8 smoke.funscript
+          & $exe render smoke.funscript smoke.png 690
+          if (-not (Test-Path smoke.png)) { throw "render produced no output" }
+          Get-Item smoke.png | Select-Object Name, Length
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: FunscriptThumbnail
+          path: |
+            src/FunscriptThumbnail/bin/Release/net48/FunscriptThumbnail.dll
+            src/FunscriptThumbTool/bin/Release/net48/FunscriptThumbTool.exe
+            src/FunscriptThumbTool/bin/Release/net48/FunscriptThumbTool.exe.config

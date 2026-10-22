@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <OutputType>Library</OutputType>
+    <LangVersion>7.3</LangVersion>
+    <AssemblyName>FunscriptThumbnail</AssemblyName>
+    <RootNamespace>FunscriptThumbnail</RootNamespace>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ComVisible>false</ComVisible>
+    <Version>1.1.0</Version>
+    <Product>Funscript Thumbnail (eroscripts dark)</Product>
+    <Description>Windows Explorer thumbnail provider for .funscript files. Rendering ported from Eroscripts/funlib (MIT).</Description>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System.Drawing" />
+  </ItemGroup>
+</Project>

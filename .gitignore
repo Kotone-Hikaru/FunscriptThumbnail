@@ -1,0 +1,24 @@
+# Build output
+bin/
+obj/
+build/
+
+# Visual Studio / Rider
+.vs/
+.idea/
+*.user
+*.suo
+*.userprefs
+
+# Local development scratch files
+tools/
+trigger.ps1
+*.log
+*.pdb
+*.mdb
+
+# NOTE: dist/ is intentionally tracked. It holds the prebuilt, ready-to-use
+# installer payload so a fresh clone works without a compiler.
+
+# Working copies of the docs assets (docs/ is the canonical location)
+preview/

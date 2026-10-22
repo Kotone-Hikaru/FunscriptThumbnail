@@ -6,6 +6,8 @@ A Windows Shell thumbnail provider (`IThumbnailProvider`) that renders an **eros
 
 ![Details pane](docs/screenshot-details-pane.png)
 
+> **[Full visual overview →](https://kotone-hikaru.github.io/FunscriptThumbnail/)** — every view, both themes, the icon set, and the colour calibration.
+
 ---
 
 ## Why this exists

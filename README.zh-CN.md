@@ -6,6 +6,8 @@
 
 ![详细信息窗格](docs/screenshot-details-pane.png)
 
+> **[完整效果总览 →](https://kotone-hikaru.github.io/FunscriptThumbnail/)** —— 全部视图、深浅两套底色、图标集，以及配色校准过程。
+
 ---
 
 ## 为什么做这个
